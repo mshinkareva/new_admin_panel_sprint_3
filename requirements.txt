@@ -1,0 +1,14 @@
+asgiref==3.7.2
+backoff==2.2.1
+certifi==2023.5.7
+Django==4.2.2
+elastic-transport==8.4.0
+elasticsearch==8.8.0
+psycopg==3.1.9
+psycopg-binary==3.1.9
+pydantic==1.10.9
+python-dotenv==1.0.0
+sqlparse==0.4.4
+typing_extensions==4.6.3
+urllib3==1.26.16
+black==23.3.0

@@ -1,0 +1,43 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+  - repo: https://github.com/asottile/seed-isort-config
+    rev: v1.9.4
+    hooks:
+      - id: seed-isort-config
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: ''  # pick the isort version you'd like to use from https://github.com/pre-commit/mirrors-isort/releases
+    hooks:
+      - id: isort
+        entry: black --skip-string-normalization
+        exclude: ^(tests)
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        entry: black --skip-string-normalization
+        exclude: ^(tests)
+  - repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: system
+        types: [python]
+        require_serial: true
+        exclude: ^(tests|venv_2)
+      - id: pylint
+        name: pylint
+        entry: pylint --max-line-length=120
+        language: system
+        types: [ python ]
+        require_serial: true
+        exclude: ^docker_compose/app/movies/migrations/
