@@ -1,0 +1,52 @@
+version: "3.9"
+
+x-app: &app
+  env_file:
+    - ./.env
+  restart: always
+
+x-default-logging: &default-logging
+  options:
+    max-size: '10m'
+    max-file: '3'
+  driver: json-file
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    <<: *app
+    logging: *default-logging
+    environment:
+      TZ: "Europe/Moscow"
+      PGTZ: "Europe/Moscow"
+    volumes:
+      - source_db_data:/var/lib/postgresql/data/
+      - ./init_scripts/dump.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+  elasticsearch:
+    image: elasticsearch:8.5.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+  app:
+    container_name: app
+    <<: *app
+    build: .
+    depends_on:
+      - postgres
+
+volumes:
+  esdata1:
+    driver: local
+  source_db_data:
+    driver: local
