@@ -8,9 +8,9 @@ from psycopg.rows import dict_row
 
 from settings import database_settings
 from state.json_file_storage import JsonFileStorage
-from state.models import Movie, State
-from workers.ES_Worker import ESWorker
-from workers.PG_Worker import PGWorker
+from state.models import Movie, State, PersonRole, Genre
+from workers.es_worker import ESWorker
+from workers.pg_worker import PGWorker
 from workers.decorators import coroutine
 from workers.logger import logger
 from workers.queries import FILM_WORKS_QUERY
@@ -23,6 +23,7 @@ def fetch_changed_movies(
     cursor, next_node: Generator
 ) -> Generator[datetime, None, None]:
     while last_updated := (yield):
+        print(last_updated)
         logger.info('Fetching movies updated after %s', last_updated)
         cursor.execute(FILM_WORKS_QUERY, (last_updated,))
         while results := cursor.fetchmany(size=100):
@@ -37,12 +38,16 @@ def transform_movies(next_node: Generator) -> Generator:
         last_updated, movie_dicts = yield last_updated
         batch = []
         for movie_dict in movie_dicts:
-            movie_dict['actors'] = pg_worker.get_actors(movie_dict['id'])
-            movie_dict['directors'] = pg_worker.get_directors(movie_dict['id'])
-            movie_dict['writers'] = pg_worker.get_writers(movie_dict['id'])
-            movie_dict['genres'] = pg_worker.get_genres(movie_dict['id'])
+            data = pg_worker.get_movie_data(movie_dict['id'])
+            actors = [PersonRole(**person).dict() for person in data if person['role_type'] == 'actor']
+            directors = [PersonRole(**person).dict() for person in data if person['role_type'] == 'director']
+            writers = [PersonRole(**person).dict() for person in data if person['role_type'] == 'writer']
+            genres = [Genre(**item).dict() for item in data if item['role_type'] == 'genre']
+            movie_dict['actors'] = actors
+            movie_dict['directors'] = directors
+            movie_dict['writers'] = writers
+            movie_dict['genres'] = genres
             movie = transform(Movie(**movie_dict))
-            logger.info(movie)
             batch.append(movie)
         next_node.send((last_updated, batch))
 
@@ -83,22 +88,24 @@ def save_movies(state: State) -> Generator:
         last_updated, movies = yield last_updated
         logger.info(f'Received for saving {len(movies)} movies')
         es_worker.load('movies', movies)
-        state.set_state(STATE_KEY, str(last_updated))
+        if movies:
+            last_movies_updated = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            state.set_state(STATE_KEY, last_movies_updated)
+
 
 
 def main():
     state = State(JsonFileStorage(logger=logger))
     dsn = make_conninfo(**database_settings.dict())
-
     with connect(dsn, row_factory=dict_row) as conn, ServerCursor(
         conn, 'fetcher'
     ) as cur:
         saver_coro = save_movies(state)
         transformer_coro = transform_movies(next_node=saver_coro)
         fetcher_coro = fetch_changed_movies(cur, transformer_coro)
-        last_movies_updated = state.get_state(STATE_KEY) or str(datetime.min)
 
         while True:
+            last_movies_updated = state.get_state(STATE_KEY) or str(datetime.min)
             logger.info('Starting ETL process for updates ...')
             fetcher_coro.send(last_movies_updated)
             sleep(5)
