@@ -1,0 +1,27 @@
+#one request
+'e79b49dc-a5d9-46ec-a2c6-4cead985d732'
+
+[{'role_type': 'actor', 'id': UUID('3dceb109-9775-4642-bf72-ecdbfa28960c'), 'name': 'Herman F. Zimmerman'}, {'role_type': 'actor', 'id': UUID('88a99b4d-4d06-4754-b06c-93217cf53244'), 'name': 'Rick Berman'}, {'role_type': 'writer', 'id': UUID('88a99b4d-4d06-4754-b06c-93217cf53244'), 'name': 'Rick Berman'}, {'role_type': 'writer', 'id': UUID('e5572b98-caad-4d8f-89a3-01a41545c082'), 'name': 'Stephen R. Wolcott'}, {'role_type': 'writer', 'id': UUID('6960e2ca-889f-41f5-b728-1e7313e54d6c'), 'name': 'Gene Roddenberry'}, {'role_type': 'writer', 'id': UUID('d67afc96-b9ed-4c91-9507-ffc2018c58d7'), 'name': 'Michael Piller'}, {'role_type': 'actor', 'id': UUID('d67afc96-b9ed-4c91-9507-ffc2018c58d7'), 'name': 'Michael Piller'}, {'role_type': 'genre', 'id': UUID('6d141ad2-d407-4252-bda4-95590aaf062a'), 'name': 'Documentary'}, {'role_type': 'director', 'id': UUID('4e03ed1e-660e-461c-ad0b-0138e24b752a'), 'name': 'Donald R. Beck'}, {'role_type': 'actor', 'id': UUID('66d0191f-0d7b-49e9-8e26-74f56043dbff'), 'name': 'Terry Farrell'}]
+actors------[{'role_type': 'actor', 'id': UUID('3dceb109-9775-4642-bf72-ecdbfa28960c'), 'name': 'Herman F. Zimmerman'}, {'role_type': 'actor', 'id': UUID('88a99b4d-4d06-4754-b06c-93217cf53244'), 'name': 'Rick Berman'}, {'role_type': 'actor', 'id': UUID('d67afc96-b9ed-4c91-9507-ffc2018c58d7'), 'name': 'Michael Piller'}, {'role_type': 'actor', 'id': UUID('66d0191f-0d7b-49e9-8e26-74f56043dbff'), 'name': 'Terry Farrell'}]
+directors------[{'role_type': 'director', 'id': UUID('4e03ed1e-660e-461c-ad0b-0138e24b752a'), 'name': 'Donald R. Beck'}]
+writers------[{'role_type': 'writer', 'id': UUID('88a99b4d-4d06-4754-b06c-93217cf53244'), 'name': 'Rick Berman'}, {'role_type': 'writer', 'id': UUID('e5572b98-caad-4d8f-89a3-01a41545c082'), 'name': 'Stephen R. Wolcott'}, {'role_type': 'writer', 'id': UUID('6960e2ca-889f-41f5-b728-1e7313e54d6c'), 'name': 'Gene Roddenberry'}, {'role_type': 'writer', 'id': UUID('d67afc96-b9ed-4c91-9507-ffc2018c58d7'), 'name': 'Michael Piller'}]
+genres------[{'role_type': 'actor', 'id': UUID('3dceb109-9775-4642-bf72-ecdbfa28960c'), 'name': 'Herman F. Zimmerman'}, {'role_type': 'actor', 'id': UUID('88a99b4d-4d06-4754-b06c-93217cf53244'), 'name': 'Rick Berman'}, {'role_type': 'writer', 'id': UUID('88a99b4d-4d06-4754-b06c-93217cf53244'), 'name': 'Rick Berman'}, {'role_type': 'writer', 'id': UUID('e5572b98-caad-4d8f-89a3-01a41545c082'), 'name': 'Stephen R. Wolcott'}, {'role_type': 'writer', 'id': UUID('6960e2ca-889f-41f5-b728-1e7313e54d6c'), 'name': 'Gene Roddenberry'}, {'role_type': 'writer', 'id': UUID('d67afc96-b9ed-4c91-9507-ffc2018c58d7'), 'name': 'Michael Piller'}, {'role_type': 'actor', 'id': UUID('d67afc96-b9ed-4c91-9507-ffc2018c58d7'), 'name': 'Michael Piller'}, {'role_type': 'genre', 'id': UUID('6d141ad2-d407-4252-bda4-95590aaf062a'), 'name': 'Documentary'}, {'role_type': 'director', 'id': UUID('4e03ed1e-660e-461c-ad0b-0138e24b752a'), 'name': 'Donald R. Beck'}, {'role_type': 'actor', 'id': UUID('66d0191f-0d7b-49e9-8e26-74f56043dbff'), 'name': 'Terry Farrell'}]
+
+
+
+
+
+
+e79b49dc-a5d9-46ec-a2c6-4cead985d732
+actors---- [{'id': UUID('d67afc96-b9ed-4c91-9507-ffc2018c58d7'), 'name': 'Michael Piller'}, {'id': UUID('88a99b4d-4d06-4754-b06c-93217cf53244'), 'name': 'Rick Berman'}, {'id': UUID('3dceb109-9775-4642-bf72-ecdbfa28960c'), 'name': 'Herman F. Zimmerman'}, {'id': UUID('66d0191f-0d7b-49e9-8e26-74f56043dbff'), 'name': 'Terry Farrell'}]
+directors---- [{'id': UUID('4e03ed1e-660e-461c-ad0b-0138e24b752a'), 'name': 'Donald R. Beck'}]
+writers---- [{'id': UUID('6960e2ca-889f-41f5-b728-1e7313e54d6c'), 'name': 'Gene Roddenberry'}, {'id': UUID('e5572b98-caad-4d8f-89a3-01a41545c082'), 'name': 'Stephen R. Wolcott'}, {'id': UUID('d67afc96-b9ed-4c91-9507-ffc2018c58d7'), 'name': 'Michael Piller'}, {'id': UUID('88a99b4d-4d06-4754-b06c-93217cf53244'), 'name': 'Rick Berman'}]
+genres---- [{'id': UUID('6d141ad2-d407-4252-bda4-95590aaf062a'), 'name': 'Documentary'}]
+
+#one request
+
+{'id': 'e79b49dc-a5d9-46ec-a2c6-4cead985d732', 'title': "'Star Trek: Deep Space Nine': Behind the Scenes", 'description': '', 'imdb_rating': 6.6, 'genre': ['Comedy', 'Short'], 'director': 'George Nichols', 'actors_names': ['Charles Chaplin', 'Minta Durfee', 'Gordon Griffith', 'Edgar Kennedy'], 'writers_names': ['Craig Hutchinson'], 'actors': [{'id': 'd642e31b-6d5d-4ed8-8c70-f2d86a75f937', 'name': 'Charles Chaplin'}, {'id': '139e8f31-b198-4127-a4a0-958e35c328bc', 'name': 'Minta Durfee'}, {'id': '203e674f-f9d1-4531-bffc-e4d5aa4d2d3b', 'name': 'Gordon Griffith'}, {'id': '22c4f839-0cea-4168-970d-75cc67306d5c', 'name': 'Edgar Kennedy'}], 'writers': [{'id': 'b67293d6-fa73-4390-95a5-76a9b42688aa', 'name': 'Craig Hutchinson'}]}
+
+
+#4 requests
+{'id': 'e79b49dc-a5d9-46ec-a2c6-4cead985d732', 'title': "'Star Trek: Deep Space Nine': Behind the Scenes", 'description': '', 'imdb_rating': 6.6, 'genre': ['Short', 'Comedy'], 'director': 'George Nichols', 'actors_names': ['Gordon Griffith', 'Charles Chaplin', 'Minta Durfee', 'Edgar Kennedy'], 'writers_names': ['Craig Hutchinson'], 'actors': [{'id': '203e674f-f9d1-4531-bffc-e4d5aa4d2d3b', 'name': 'Gordon Griffith'}, {'id': 'd642e31b-6d5d-4ed8-8c70-f2d86a75f937', 'name': 'Charles Chaplin'}, {'id': '139e8f31-b198-4127-a4a0-958e35c328bc', 'name': 'Minta Durfee'}, {'id': '22c4f839-0cea-4168-970d-75cc67306d5c', 'name': 'Edgar Kennedy'}], 'writers': [{'id': 'b67293d6-fa73-4390-95a5-76a9b42688aa', 'name': 'Craig Hutchinson'}]}

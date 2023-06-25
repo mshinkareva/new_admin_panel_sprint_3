@@ -10,7 +10,7 @@ from workers.queries import (
     WRITERS_QUERY,
     DIRECTORS_QUERY,
     ACTORS_QUERY,
-    GENRES_QUERY,
+    GENRES_QUERY, MOVIE_DATA_QUERY,
 )
 
 
@@ -50,6 +50,14 @@ class PGWorker:
             conn, 'fetcher'
         ) as cur:
             cur.execute(GENRES_QUERY, {'film_id': film_id})
+            return cur.fetchall()
+
+    @backoff.on_exception(backoff.expo, Exception, max_time=60)
+    def get_movie_data(self, film_id):
+        with connect(self.dsn, row_factory=dict_row) as conn, ServerCursor(
+            conn, 'fetcher'
+        ) as cur:
+            cur.execute(MOVIE_DATA_QUERY, {'film_id': film_id})
             return cur.fetchall()
 
     @backoff.on_exception(backoff.expo, Exception, max_time=60)
